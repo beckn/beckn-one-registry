@@ -1,0 +1,1840 @@
+{
+	"info": {
+		"_postman_id": "f16750ad-e999-40ed-bda1-2dea06cc88e8",
+		"name": "New Registry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "991546"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Signup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Store JWT and Email in collection variables\", function () {",
+									"    let responseJson = pm.response.json();",
+									"    ",
+									"    if (responseJson.jwt) {",
+									"        pm.collectionVariables.set(\"jwtToken\", responseJson.jwt);",
+									"        console.log(\"JWT stored successfully: \" + responseJson.jwt);",
+									"    } else {",
+									"        pm.test(\"JWT token is missing in response\", function() {",
+									"            pm.expect(responseJson.jwt).to.exist;",
+									"        });",
+									"    }",
+									"    ",
+									"    if (responseJson.user && responseJson.user.email) {",
+									"        pm.collectionVariables.set(\"userEmail\", responseJson.user.email);",
+									"        console.log(\"Email stored successfully: \" + responseJson.user.email);",
+									"    } else {",
+									"        pm.test(\"Email is missing in response\", function() {",
+									"            pm.expect(responseJson.user.email).to.exist;",
+									"        });",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{$randomFirstName}}.{{$randomLastName}}@gmail.com\",\n    \"password\": \"User@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jwt\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImlhdCI6MTc0MzQ5NDc3MywiZXhwIjoxNzQzNTgxMTczfQ.an21aIoTD5dieohKMNWBDGEVz_cKGOtzW_HRcZHOdUU\",\n    \"user\": {\n        \"id\": 38,\n        \"documentId\": \"ws2t1iermfvub9nmreofkyaf\",\n        \"username\": \"Mireille.Sauer@gmail.com\",\n        \"email\": \"Mireille.Sauer@gmail.com\",\n        \"blocked\": false,\n        \"createdAt\": \"2025-04-01T08:06:13.133Z\",\n        \"updatedAt\": \"2025-04-01T08:06:13.133Z\",\n        \"publishedAt\": \"2025-04-01T08:06:13.041Z\",\n        \"phone_number\": null,\n        \"alternate_phone_number\": null,\n        \"full_name\": null,\n        \"email_verified\": false,\n        \"account_status\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{password}}\",\n    \"fullName\": \"{{$randomFullName}}\",\n    \"phoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"alternatePhoneNumber\": \"{{$randomPhoneNumber}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{$randomFirstName}}.{{$randomLastName}}@gmail.com\",\n    \"password\": \"User@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jwt\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImlhdCI6MTc0MzQ5NDc3MywiZXhwIjoxNzQzNTgxMTczfQ.an21aIoTD5dieohKMNWBDGEVz_cKGOtzW_HRcZHOdUU\",\n    \"user\": {\n        \"id\": 38,\n        \"documentId\": \"ws2t1iermfvub9nmreofkyaf\",\n        \"username\": \"Mireille.Sauer@gmail.com\",\n        \"email\": \"Mireille.Sauer@gmail.com\",\n        \"blocked\": false,\n        \"createdAt\": \"2025-04-01T08:06:13.133Z\",\n        \"updatedAt\": \"2025-04-01T08:06:13.133Z\",\n        \"publishedAt\": \"2025-04-01T08:06:13.041Z\",\n        \"phone_number\": null,\n        \"alternate_phone_number\": null,\n        \"full_name\": null,\n        \"email_verified\": false,\n        \"account_status\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Me",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 66,\n    \"documentId\": \"zfybn7s6ck4u398copmo30co\",\n    \"username\": \"dayeca4078@oronny.com\",\n    \"email\": \"dayeca4078@oronny.com\",\n    \"password\": \"$2a$10$guJR6eLtKgvux3urMCgJbe/g8sWHnfnLQOmVUHqGVZWwMtboFFOi2\",\n    \"blocked\": false,\n    \"createdAt\": \"2025-04-02T10:25:31.314Z\",\n    \"updatedAt\": \"2025-04-02T11:56:14.496Z\",\n    \"publishedAt\": \"2025-04-02T11:56:14.484Z\",\n    \"locale\": null,\n    \"phoneNumber\": null,\n    \"alternatePhoneNumber\": null,\n    \"fullName\": null,\n    \"accountStatus\": \"ACTIVE\",\n    \"verificationToken\": null,\n    \"emailVerified\": true,\n    \"role\": {\n        \"id\": 4,\n        \"documentId\": \"y41xl0czghuvadl9tl9o7uf0\",\n        \"name\": \"User\",\n        \"description\": \"User role can update their own data\",\n        \"type\": \"user\",\n        \"createdAt\": \"2025-04-01T08:04:26.217Z\",\n        \"updatedAt\": \"2025-04-01T08:04:26.217Z\",\n        \"publishedAt\": \"2025-04-01T08:04:26.217Z\",\n        \"locale\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users?populate[0]=role&filters[emailVerified]=true&pagination[pageSize]=4&pagination[page]=1&filters[fullName]=Laurence Wisoky&",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "populate[0]",
+									"value": "role"
+								},
+								{
+									"key": "filters[emailVerified]",
+									"value": "true"
+								},
+								{
+									"key": "pagination[pageSize]",
+									"value": "4"
+								},
+								{
+									"key": "pagination[page]",
+									"value": "1"
+								},
+								{
+									"key": "filters[fullName]",
+									"value": "Laurence Wisoky"
+								},
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users?populate[0]=role&filters[emailVerified]=true&pagination[pageSize]=4&pagination[page]=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "populate[0]",
+											"value": "role"
+										},
+										{
+											"key": "filters[emailVerified]",
+											"value": "true"
+										},
+										{
+											"key": "pagination[pageSize]",
+											"value": "4"
+										},
+										{
+											"key": "pagination[page]",
+											"value": "1"
+										},
+										{
+											"key": "start",
+											"value": "0",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Apr 2025 04:43:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "connect-src 'self' https:;img-src 'self' data: blob: https://market-assets.strapi.io;media-src 'self' data: blob:;default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": ""
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Strapi <strapi.io>"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 5,\n            \"documentId\": \"bh50giksidmhunlwtcu0r79a\",\n            \"username\": \"dayeca4078@oronny.com\",\n            \"fullName\": \"Laurence Wisoky\",\n            \"email\": \"dayeca4078@oronny.com\",\n            \"phoneNumber\": \"388-630-7028\",\n            \"alternatePhoneNumber\": \"826-791-1651\",\n            \"emailVerified\": true,\n            \"blocked\": false,\n            \"accountStatus\": \"ACTIVE\",\n            \"createdAt\": \"2025-04-02T10:58:17.525Z\",\n            \"updatedAt\": \"2025-04-21T15:57:06.634Z\",\n            \"publishedAt\": \"2025-04-21T15:57:06.627Z\",\n            \"role\": {\n                \"id\": 3,\n                \"documentId\": \"wuznblnum93nmjtgcje3tvf5\",\n                \"name\": \"Admin\",\n                \"description\": \"Admin have full access\",\n                \"type\": \"admin\",\n                \"createdAt\": \"2025-04-01T12:14:52.533Z\",\n                \"updatedAt\": \"2025-04-01T12:14:52.533Z\",\n                \"publishedAt\": \"2025-04-01T12:14:52.533Z\"\n            }\n        },\n        {\n            \"id\": 8,\n            \"documentId\": \"dv1728ntat7wrnpf9pu8awwl\",\n            \"username\": \"aniket.chahare@eminds.ai\",\n            \"fullName\": null,\n            \"email\": \"aniket.chahare@eminds.ai\",\n            \"phoneNumber\": null,\n            \"alternatePhoneNumber\": null,\n            \"emailVerified\": true,\n            \"blocked\": false,\n            \"accountStatus\": \"ACTIVE\",\n            \"createdAt\": \"2025-04-18T12:45:47.409Z\",\n            \"updatedAt\": \"2025-04-18T13:25:42.488Z\",\n            \"publishedAt\": \"2025-04-18T13:25:42.483Z\",\n            \"role\": {\n                \"id\": 4,\n                \"documentId\": \"a4uyo2mrne8tuawqj2iy082f\",\n                \"name\": \"User\",\n                \"description\": \"User role can update their own data\",\n                \"type\": \"user\",\n                \"createdAt\": \"2025-04-01T12:15:16.548Z\",\n                \"updatedAt\": \"2025-04-01T12:15:16.548Z\",\n                \"publishedAt\": \"2025-04-01T12:15:16.548Z\"\n            }\n        },\n        {\n            \"id\": 9,\n            \"documentId\": \"m9c8zibvn2gcqh2u397zaf21\",\n            \"username\": \"testuser@gmail.com\",\n            \"fullName\": \"\",\n            \"email\": \"testuser@gmail.com\",\n            \"phoneNumber\": \"8890090000\",\n            \"alternatePhoneNumber\": \"8890099123\",\n            \"emailVerified\": true,\n            \"blocked\": false,\n            \"accountStatus\": \"ACTIVE\",\n            \"createdAt\": \"2025-04-21T15:57:49.520Z\",\n            \"updatedAt\": \"2025-04-21T15:57:49.520Z\",\n            \"publishedAt\": \"2025-04-21T15:57:49.506Z\",\n            \"role\": {\n                \"id\": 4,\n                \"documentId\": \"a4uyo2mrne8tuawqj2iy082f\",\n                \"name\": \"User\",\n                \"description\": \"User role can update their own data\",\n                \"type\": \"user\",\n                \"createdAt\": \"2025-04-01T12:15:16.548Z\",\n                \"updatedAt\": \"2025-04-01T12:15:16.548Z\",\n                \"publishedAt\": \"2025-04-01T12:15:16.548Z\"\n            }\n        }\n    ],\n    \"pagination\": {\n        \"page\": \"1\",\n        \"pageSize\": \"4\",\n        \"pageCount\": 1,\n        \"total\": 3\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/m9c8zibvn2gcqh2u397zaf21?populate[0]=role",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"m9c8zibvn2gcqh2u397zaf21"
+							],
+							"query": [
+								{
+									"key": "populate[0]",
+									"value": "role"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/m9c8zibvn2gcqh2u397zaf21?populate[0]=role",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"m9c8zibvn2gcqh2u397zaf21"
+									],
+									"query": [
+										{
+											"key": "populate[0]",
+											"value": "role"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Apr 2025 11:02:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "622"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "connect-src 'self' https:;img-src 'self' data: blob: https://market-assets.strapi.io;media-src 'self' data: blob:;default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": ""
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Strapi <strapi.io>"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 9,\n    \"documentId\": \"m9c8zibvn2gcqh2u397zaf21\",\n    \"username\": \"testuser@gmail.com\",\n    \"fullName\": \"\",\n    \"email\": \"testuser@gmail.com\",\n    \"phoneNumber\": \"8890090000\",\n    \"alternatePhoneNumber\": \"8890099123\",\n    \"emailVerified\": true,\n    \"blocked\": false,\n    \"accountStatus\": \"ACTIVE\",\n    \"createdAt\": \"2025-04-21T15:57:49.520Z\",\n    \"updatedAt\": \"2025-04-21T15:57:49.520Z\",\n    \"publishedAt\": \"2025-04-21T15:57:49.506Z\",\n    \"role\": {\n        \"id\": 4,\n        \"documentId\": \"a4uyo2mrne8tuawqj2iy082f\",\n        \"name\": \"User\",\n        \"description\": \"User role can update their own data\",\n        \"type\": \"user\",\n        \"createdAt\": \"2025-04-01T12:15:16.548Z\",\n        \"updatedAt\": \"2025-04-01T12:15:16.548Z\",\n        \"publishedAt\": \"2025-04-01T12:15:16.548Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"{{$randomFullName}}\",\n    \"phoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"alternatePhoneNumber\": \"{{$randomPhoneNumber}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Me",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fullName\": \"{{$randomFullName}}\",\n    \"phoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"alternatePhoneNumber\": \"{{$randomPhoneNumber}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 67,\n    \"documentId\": \"qi2z4zyod5m0ldswcelhddbl\",\n    \"username\": \"hiwep92233@oronny.com\",\n    \"email\": \"hiwep92233@oronny.com\",\n    \"blocked\": false,\n    \"createdAt\": \"2025-04-03T07:35:38.992Z\",\n    \"updatedAt\": \"2025-04-03T09:12:02.941Z\",\n    \"publishedAt\": \"2025-04-03T09:12:02.933Z\",\n    \"phoneNumber\": \"768-751-9868\",\n    \"alternatePhoneNumber\": \"660-686-7282\",\n    \"fullName\": \"Jeannette Crist\",\n    \"accountStatus\": \"ACTIVE\",\n    \"emailVerified\": true,\n    \"role\": {\n        \"id\": 4,\n        \"documentId\": \"y41xl0czghuvadl9tl9o7uf0\",\n        \"name\": \"User\",\n        \"description\": \"User role can update their own data\",\n        \"type\": \"user\",\n        \"createdAt\": \"2025-04-01T08:04:26.217Z\",\n        \"updatedAt\": \"2025-04-01T08:04:26.217Z\",\n        \"publishedAt\": \"2025-04-01T08:04:26.217Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \n    \"fullName\": \"{{$randomFullName}}\",\n    \"phoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"alternatePhoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"isAdmin\": false,\n    \"blocked\": false,\n    \"accountStatus\": \"ACTIVE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/kinvtkpuvkf2xo7a6ka4txe7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"kinvtkpuvkf2xo7a6ka4txe7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \n    \"email\": \"dayeca4078@oronny.com\",\n    \"fullName\": \"{{$randomFullName}}\",\n    \"phoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"alternatePhoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"isAdmin\": false,\n    \"blocked\": false,\n    \"accountStatus\": \"ACTIVE\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/zfybn7s6ck4u398copmo30co",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"zfybn7s6ck4u398copmo30co"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 66,\n    \"documentId\": \"zfybn7s6ck4u398copmo30co\",\n    \"username\": \"dayeca4078@oronny.com\",\n    \"email\": \"dayeca4078@oronny.com\",\n    \"blocked\": false,\n    \"createdAt\": \"2025-04-02T10:25:31.314Z\",\n    \"updatedAt\": \"2025-04-03T15:20:29.407Z\",\n    \"publishedAt\": \"2025-04-03T15:20:29.392Z\",\n    \"phoneNumber\": \"685-937-7329\",\n    \"alternatePhoneNumber\": \"368-727-3763\",\n    \"fullName\": \"Lorenzo Terry\",\n    \"accountStatus\": \"ACTIVE\",\n    \"emailVerified\": true,\n    \"role\": {\n        \"id\": 4,\n        \"documentId\": \"y41xl0czghuvadl9tl9o7uf0\",\n        \"name\": \"User\",\n        \"description\": \"User role can update their own data\",\n        \"type\": \"user\",\n        \"createdAt\": \"2025-04-01T08:04:26.217Z\",\n        \"updatedAt\": \"2025-04-01T08:04:26.217Z\",\n        \"publishedAt\": \"2025-04-01T08:04:26.217Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/kinvtkpuvkf2xo7a6ka4txe7",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"kinvtkpuvkf2xo7a6ka4txe7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/ii4pjk01hqrpfmxmurrris56",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"ii4pjk01hqrpfmxmurrris56"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User deleted successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Store JWT and Email in collection variables\", function () {",
+									"    let responseJson = pm.response.json();",
+									"    ",
+									"    if (responseJson.jwt) {",
+									"        pm.collectionVariables.set(\"jwtToken\", responseJson.jwt);",
+									"        console.log(\"JWT stored successfully: \" + responseJson.jwt);",
+									"    } else {",
+									"        pm.test(\"JWT token is missing in response\", function() {",
+									"            pm.expect(responseJson.jwt).to.exist;",
+									"        });",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"identifier\": \"{{userEmail}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/local",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"local"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Local",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identifier\": \"Mireille.Sauer@gmail.com\",\n    \"password\": \"User@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/local",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"local"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jwt\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImlhdCI6MTc0MzQ5NTc5MywiZXhwIjoxNzQzNTgyMTkzfQ.YWZiAJwd0ck9xgsc0ongnRwriBcnaHf53CFDzlGrc-k\",\n    \"user\": {\n        \"id\": 38,\n        \"documentId\": \"ws2t1iermfvub9nmreofkyaf\",\n        \"username\": \"Mireille.Sauer@gmail.com\",\n        \"email\": \"Mireille.Sauer@gmail.com\",\n        \"blocked\": false,\n        \"createdAt\": \"2025-04-01T08:06:13.133Z\",\n        \"updatedAt\": \"2025-04-01T08:06:13.133Z\",\n        \"publishedAt\": \"2025-04-01T08:06:13.041Z\",\n        \"phone_number\": null,\n        \"alternate_phone_number\": null,\n        \"full_name\": null,\n        \"email_verified\": false,\n        \"account_status\": null,\n        \"role\": {\n            \"id\": 4,\n            \"documentId\": \"y41xl0czghuvadl9tl9o7uf0\",\n            \"name\": \"User\",\n            \"description\": \"User role can update their own data\",\n            \"type\": \"user\",\n            \"createdAt\": \"2025-04-01T08:04:26.217Z\",\n            \"updatedAt\": \"2025-04-01T08:04:26.217Z\",\n            \"publishedAt\": \"2025-04-01T08:04:26.217Z\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Email confirmation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/email-confirmation?confirmation=4198497fc406ebaaf3b9d8c4ac7bd23eee7884b83fb8f4d9816dd4d44195faf3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"email-confirmation"
+							],
+							"query": [
+								{
+									"key": "confirmation",
+									"value": "4198497fc406ebaaf3b9d8c4ac7bd23eee7884b83fb8f4d9816dd4d44195faf3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Email confirmation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/auth/email-confirmation?confirmation=f40fd08ffb5b1db616fca67b5b59d7a550c7f8811bcce17514c8c2ba23af1a54",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"email-confirmation"
+									],
+									"query": [
+										{
+											"key": "confirmation",
+											"value": "f40fd08ffb5b1db616fca67b5b59d7a550c7f8811bcce17514c8c2ba23af1a54"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Your account has been confirmed\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send email confirmation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{userEmail}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/send-email-confirmation",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"send-email-confirmation"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Send email confirmation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"hidabi3239@oronny.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/send-email-confirmation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"send-email-confirmation"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Email confirmation link has been sent to your email address\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Main",
+			"item": [
+				{
+					"name": "Lookup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscribers/lookup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscribers",
+								"lookup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Lookup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"subscriber_id\": \"178f3-2401-4900-1c9a-941d-4d3e-d696-3cc2-145d.ngrok-free.app\",\n    \"url\": \"https://78f3-2401-4900-1c9a-941d-4d3e-d696-3cc2-145d.ngrok-free.app\",\n    \"type\": \"BAP\",\n    \"domain\": \"mobility\",\n    \"location\": {\n        \"city\": {\n            \"name\": \"Bangalore\",\n            \"code\": \"BLR\"\n        },\n        \"country\": {\n            \"name\": \"India\",\n            \"code\": \"IN\"\n        }\n    },\n    \"key_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"signing_public_key\": \"LcyaWzmzM4/1QHif71+aZh9hspzp3sH1uuCtb102mRM=\",\n    \"encr_public_key\": \"LcyaWzmzM4/1QHif71+aZh9hspzp3sH1uuCtb102mRM=\",\n    \"valid_from\": \"2025-03-18T16:36:08.651Z\",\n    \"valid_until\": \"2026-03-18T16:36:08.651Z\",\n    \"status\": \"SUBSCRIBED\",\n    \"created\": \"2025-03-18T16:36:08.651Z\",\n    \"updated\": \"2025-03-18T16:36:08.651Z\",\n    \"nonce\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/registry/lookup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"registry",
+										"lookup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"BAP\",\n        \"domain\": \"retail:1.1.0\",\n        \"signing_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"subscriber_id\": \"shreyvishal\",\n        \"unique_key_id\": \"shreyvishal-key\",\n        \"valid_until\": \"2026-03-19T10:00:00Z\",\n        \"subscriber_url\": \"https://6fcf-2401-4900-1c5c-91cb-ed2b-3464-f823-9936.ngrok-free.app\",\n        \"created\": \"2025-03-19T09:30:00Z\",\n        \"valid_from\": \"2025-03-19T10:00:00Z\",\n        \"encr_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"updated\": \"2025-03-19T09:30:00Z\"\n    },\n    {\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"BAP\",\n        \"domain\": \"dsep:jobs\",\n        \"signing_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"subscriber_id\": \"shreyvishal\",\n        \"unique_key_id\": \"shreyvishal-key\",\n        \"valid_until\": \"2026-03-19T10:00:00Z\",\n        \"subscriber_url\": \"https://6fcf-2401-4900-1c5c-91cb-ed2b-3464-f823-9936.ngrok-free.app\",\n        \"created\": \"2025-03-19T09:30:00Z\",\n        \"valid_from\": \"2025-03-19T10:00:00Z\",\n        \"encr_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"updated\": \"2025-03-19T09:30:00Z\"\n    },\n    {\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"BAP\",\n        \"domain\": \"mobility\",\n        \"signing_public_key\": \"MIIBIjANBgkqh...\",\n        \"subscriber_id\": \"12345\",\n        \"unique_key_id\": \"key-12345\",\n        \"valid_until\": \"2026-03-19T10:00:00Z\",\n        \"subscriber_url\": \"https://example.com/subscriber\",\n        \"created\": \"2025-03-19T09:30:00Z\",\n        \"valid_from\": \"2025-03-19T10:00:00Z\",\n        \"encr_public_key\": \"MIIBIjANBgkqh...\",\n        \"updated\": \"2025-03-19T09:30:00Z\"\n    },\n    {\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"BAP\",\n        \"domain\": \"dsep:scholarships\",\n        \"signing_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"subscriber_id\": \"shreyvishal\",\n        \"unique_key_id\": \"shreyvishal-key\",\n        \"valid_until\": \"2026-03-19T10:00:00Z\",\n        \"subscriber_url\": \"https://6fcf-2401-4900-1c5c-91cb-ed2b-3464-f823-9936.ngrok-free.app\",\n        \"created\": \"2025-03-19T09:30:00Z\",\n        \"valid_from\": \"2025-03-19T10:00:00Z\",\n        \"encr_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"updated\": \"2025-03-19T09:30:00Z\"\n    },\n    {\n        \"status\": \"SUBSCRIBED\"\n    },\n    {\n        \"status\": \"SUBSCRIBED\"\n    },\n    {\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"BAP\",\n        \"domain\": \"deg:retail\",\n        \"signing_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"subscriber_id\": \"shreyvishal\",\n        \"unique_key_id\": \"shreyvishal-key\",\n        \"valid_until\": \"2026-03-19T10:00:00Z\",\n        \"subscriber_url\": \"https://6fcf-2401-4900-1c5c-91cb-ed2b-3464-f823-9936.ngrok-free.app\",\n        \"created\": \"2025-03-19T09:30:00Z\",\n        \"valid_from\": \"2025-03-19T10:00:00Z\",\n        \"encr_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"updated\": \"2025-03-19T09:30:00Z\"\n    },\n    {\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"BAP\",\n        \"domain\": \"dsep:mentor\",\n        \"signing_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"subscriber_id\": \"shreyvishal\",\n        \"unique_key_id\": \"shreyvishal-key\",\n        \"valid_until\": \"2026-03-19T10:00:00Z\",\n        \"subscriber_url\": \"https://6fcf-2401-4900-1c5c-91cb-ed2b-3464-f823-9936.ngrok-free.app\",\n        \"created\": \"2025-03-19T09:30:00Z\",\n        \"valid_from\": \"2025-03-19T10:00:00Z\",\n        \"encr_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"updated\": \"2025-03-19T09:30:00Z\"\n    },\n    {\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"BAP\",\n        \"domain\": \"deg:finance\",\n        \"signing_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"subscriber_id\": \"shreyvishals\",\n        \"unique_key_id\": \"shreyvishal-key\",\n        \"valid_until\": \"2026-03-19T10:00:00Z\",\n        \"subscriber_url\": \"https://6fcf-2401-4900-1c5c-91cb-ed2b-3464-f823-9936.ngrok-free.app\",\n        \"created\": \"2025-03-19T09:30:00Z\",\n        \"valid_from\": \"2025-03-19T10:00:00Z\",\n        \"encr_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"updated\": \"2025-03-19T09:30:00Z\"\n    },\n    {\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"BAP\",\n        \"domain\": \"deg:finance\",\n        \"signing_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"subscriber_id\": \"shreyvishalss\",\n        \"unique_key_id\": \"shreyvishal-key\",\n        \"valid_until\": \"2026-03-19T10:00:00Z\",\n        \"subscriber_url\": \"https://6fcf-2401-4900-1c5c-91cb-ed2b-3464-f823-9936.ngrok-free.app\",\n        \"created\": \"2025-03-19T09:30:00Z\",\n        \"valid_from\": \"2025-03-19T10:00:00Z\",\n        \"encr_public_key\": \"FXp25x9hmCzPorKQxOZYa4jzU/cqq9DKO4wmGcgtfCI=\",\n        \"updated\": \"2025-03-19T09:30:00Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Subscribe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subscriber_id\": \"bcp12311111112211.com\",\n    \"url\": \"https://11111177e8-2409-40e3-3008-9085-352b-456e-19e7-b8d6.ngrok-free.app\",\n    \"type\": \"BG\",\n    \"domain\": \"mobility\",\n    \"location\": {\n        \"city\": {\n            \"name\": \"Bangalore\",\n            \"code\": \"BLR\"\n        },\n        \"country\": {\n            \"name\": \"India\",\n            \"code\": \"IN\"\n        }\n    },\n    \"key_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"signing_public_key\": \"gifBoEwBMQ5GB2yOqE7YnBqCSsqJxmWb3B17hxHRAD8=\",\n    \"encr_public_key\": \"gifBoEwBMQ5GB2yOqE7YnBqCSsqJxmWb3B17hxHRAD8=\",\n    \"valid_from\": \"2025-03-18T16:36:08.651Z\",\n    \"valid_until\": \"2026-03-18T16:36:08.651Z\",\n    \"created\": \"2025-03-18T16:36:08.651Z\",\n    \"updated\": \"2025-03-18T16:36:08.651Z\",\n    \"nonce\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscribers/subscribe",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscribers",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Network domain",
+			"item": [
+				{
+					"name": "Network domain",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwtToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"deg:test\",\n    \"schema_url\": \"{{$randomUrl}}\",\n    \"description\": \"{{$randomLoremText}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/network-domains",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"network-domains"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Network domain",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_JWT_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/network-domains/:documentId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"network-domains",
+								":documentId"
+							],
+							"variable": [
+								{
+									"key": "documentId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Network domain",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwtToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"osvaldo.com\",\n    \"description\": \"Dolore ea voluptatibus.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/network-domains/g7ca2kqwlw40z93y0grg9uyz",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"network-domains",
+								"g7ca2kqwlw40z93y0grg9uyz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Network domains",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwtToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/network-domains?pagination[pageSize]=2&pagination[page]=1&filters[name][$contains]=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"network-domains"
+							],
+							"query": [
+								{
+									"key": "pagination[pageSize]",
+									"value": "2"
+								},
+								{
+									"key": "pagination[page]",
+									"value": "1"
+								},
+								{
+									"key": "filters[name][$contains]",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Network domain",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwtToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/network-domains/g7ca2kqwlw40z93y0grg9uyz",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"network-domains",
+								"g7ca2kqwlw40z93y0grg9uyz"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscribers",
+			"item": [
+				{
+					"name": "Subscribers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscribers?paginations[pageSize]=10&pagination[page]=1&name=initiated",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscribers"
+							],
+							"query": [
+								{
+									"key": "paginations[pageSize]",
+									"value": "10"
+								},
+								{
+									"key": "pagination[page]",
+									"value": "1"
+								},
+								{
+									"key": "name",
+									"value": "initiated"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Subscribers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/subscribers?paginations[pageSize]=2&pagination[page]=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"subscribers"
+									],
+									"query": [
+										{
+											"key": "paginations[pageSize]",
+											"value": "2"
+										},
+										{
+											"key": "pagination[page]",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Apr 2025 14:42:09 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "connect-src 'self' https:;img-src 'self' data: blob: https://market-assets.strapi.io;media-src 'self' data: blob:;default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": ""
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Strapi <strapi.io>"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": \"entry:cord:u2y9M8qkYxR8SmTYXXN5v4tkwnYxAvM4SxgF7MwScNL8u4bFf\",\n            \"name\": \"-7DLx9vBioi9Tt63GYpwO\",\n            \"status\": \"INITIATED\",\n            \"type\": \"BAP\",\n            \"domain\": \"retail\",\n            \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU\",\n            \"subscriber_id\": \"sub-001\",\n            \"subscriber_url\": \"http://sub-001.com\",\n            \"unique_key_id\": \"as12\",\n            \"valid_from\": \"2025-04-22\",\n            \"valid_until\": \"2025-05-31\",\n            \"created\": \"2025-04-22T08:01:47.676Z\",\n            \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n            \"updated\": \"2025-04-22T08:01:47.676Z\"\n        },\n        {\n            \"id\": \"entry:cord:u2zj38ddqAp33XJdvqeTg2wUC8EMifMXF8Qmrq2tqX3b9ueR3\",\n            \"name\": \"84_wZee8MDzCTnp9A0vNK\",\n            \"status\": \"SUBSCRIBED\",\n            \"type\": \"BG\",\n            \"domain\": \"mobility\",\n            \"signing_public_key\": \"gifBoEwBMQ5GB2yOqE7YnBqCSsqJxmWb3B17hxHRAD8=\",\n            \"subscriber_id\": \"bcp123111111.com\",\n            \"subscriber_url\": \"https://11111177e8-2409-40e3-3008-9085-352b-456e-19e7-b8d6.ngrok-free.app\",\n            \"unique_key_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n            \"valid_from\": \"2025-03-18T16:36:08.651Z\",\n            \"valid_until\": \"2026-03-18T16:36:08.651Z\",\n            \"created\": \"2025-04-22T06:55:29.899Z\",\n            \"encr_public_key\": \"gifBoEwBMQ5GB2yOqE7YnBqCSsqJxmWb3B17hxHRAD8=\",\n            \"updated\": \"2025-04-22T06:55:29.899Z\"\n        }\n    ],\n    \"pagination\": {\n        \"page\": 1,\n        \"pageSize\": 2,\n        \"pageCount\": 4\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Subscriber",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscribers/7fHRLpblY9jyS04M5vTwm",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscribers",
+								"7fHRLpblY9jyS04M5vTwm"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Subscriber",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/subscribers/7fHRLpblY9jyS04M5vTwm",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"subscribers",
+										"7fHRLpblY9jyS04M5vTwm"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Apr 2025 11:03:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "629"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "connect-src 'self' https:;img-src 'self' data: blob: https://market-assets.strapi.io;media-src 'self' data: blob:;default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": ""
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Strapi <strapi.io>"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"entry:cord:u2xy9ePHVuUyCQr9BxWaW4oroRoRUiwwLHGPTygeiFjPy9E7S\",\n    \"name\": \"7fHRLpblY9jyS04M5vTwm\",\n    \"status\": \"SUBSCRIBED\",\n    \"type\": \"BG\",\n    \"domain\": \"*\",\n    \"signing_public_key\": \"GwjXyWoSffPuUMsmSOWPmTTwgPLiop7vh25mINI/nLI=\",\n    \"subscriber_id\": \"dedi-gateway.becknprotocol.io\",\n    \"subscriber_url\": \"https://dedi-gateway.becknprotocol.io/bg\",\n    \"unique_key_id\": \"dedi-gateway.becknprotocol.io.k1\",\n    \"valid_from\": \"2025-03-27T11:31:08.000Z\",\n    \"valid_until\": \"2035-03-25T11:31:08.000Z\",\n    \"created\": \"2025-03-27T11:31:08.000Z\",\n    \"encr_public_key\": \"seZg13rY64uOMrqVGl2HoUTuorUPyb/OiWEQaIO35G0=\",\n    \"city_code\": \"*\",\n    \"country_code\": \"*\",\n    \"updated\": \"2025-03-27T11:31:08.000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Subscribers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/subscribers/Uc3D3sCmqETH-tTZX-MM8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscribers",
+								"Uc3D3sCmqETH-tTZX-MM8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Subscribers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/subscribers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"subscribers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "connect-src 'self' https:;img-src 'self' data: blob: https://market-assets.strapi.io;media-src 'self' data: blob:;default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": ""
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Strapi <strapi.io>"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2698"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Apr 2025 07:52:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"entry:cord:u2yFNXZ7SVKe1cqu8vtxoQ7xWoPF8F9C2Uo8omhR7bxRtY993\",\n        \"name\": \"registry.becknprotocol.io.k1\",\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"LREG\",\n        \"domain\": \"registry.becknprotocol.io\",\n        \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n        \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n        \"subscriber_url\": \"https://registry.becknprotocol.io/subscribers\",\n        \"unique_key_id\": \"registry.becknprotocol.io.k1\",\n        \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n        \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n        \"created\": \"2024-11-21T10:39:22.000Z\",\n        \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n        \"city_code\": \"STD:080\",\n        \"country_code\": \"IND\",\n        \"updated\": \"2024-11-21T10:39:22.000Z\"\n    },\n    {\n        \"id\": \"entry:cord:u2yFNXZ7SVKe1cqu8vtxoQ7xWoPF8F9C2Uo8omhR7bxRtY993\",\n        \"name\": \"registry.becknprotocol.io.k1\",\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"LREG\",\n        \"domain\": \"registry.becknprotocol.io\",\n        \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n        \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n        \"subscriber_url\": \"https://registry.becknprotocol.io/subscribers\",\n        \"unique_key_id\": \"registry.becknprotocol.io.k1\",\n        \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n        \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n        \"created\": \"2024-11-21T10:39:22.000Z\",\n        \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n        \"city_code\": \"STD:080\",\n        \"country_code\": \"IND\",\n        \"updated\": \"2024-11-21T10:39:22.000Z\"\n    },\n    {\n        \"id\": \"entry:cord:u2yFNXZ7SVKe1cqu8vtxoQ7xWoPF8F9C2Uo8omhR7bxRtY993\",\n        \"name\": \"registry.becknprotocol.io.k1\",\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"LREG\",\n        \"domain\": \"registry.becknprotocol.io\",\n        \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n        \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n        \"subscriber_url\": \"https://registry.becknprotocol.io/subscribers\",\n        \"unique_key_id\": \"registry.becknprotocol.io.k01\",\n        \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n        \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n        \"created\": \"2024-11-21T10:39:22.000Z\",\n        \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n        \"city_code\": \"STD:080\",\n        \"country_code\": \"IND\",\n        \"updated\": \"2024-11-21T10:39:22.000Z\"\n    },\n    {\n        \"id\": \"entry:cord:u2yFNXZ7SVKe1cqu8vtxoQ7xWoPF8F9C2Uo8omhR7bxRtY993\",\n        \"name\": \"registry.becknprotocol.io.k1\",\n        \"status\": \"SUBSCRIBED\",\n        \"type\": \"LREG\",\n        \"domain\": \"registry.becknprotocol.io\",\n        \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n        \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n        \"subscriber_url\": \"https://registry.becknprotocol.io/subscribers\",\n        \"unique_key_id\": \"registry.becknprotocol.io.k1\",\n        \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n        \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n        \"created\": \"2024-11-21T10:39:22.000Z\",\n        \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n        \"city_code\": \"STD:080\",\n        \"country_code\": \"IND\",\n        \"updated\": \"2024-11-21T10:39:22.000Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Subscribers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {     \n        \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n        \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n        \"subscriber_url\": \"https://registry.becknprotocol.io/subscribers\",\n        \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n        \"valid_until\": \"2044-11-21T22:39:22.098Z\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subscribers/registry.becknprotocol.io.k1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscribers",
+								"registry.becknprotocol.io.k1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.0.1:1337/api",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "User@123",
+			"type": "string"
+		},
+		{
+			"key": "jwtToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "userEmail",
+			"value": "Antonetta30@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

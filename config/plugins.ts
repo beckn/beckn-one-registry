@@ -12,20 +12,20 @@ export default ({ env }) => ({
   },
   email: {
     config: {
-      provider: 'nodemailer',
+      provider: "nodemailer",
       providerOptions: {
         host: env("EMAIL_HOST"),
         port: env("EMAIL_PORT"),
         secure: false,
         auth: {
           user: env("EMAIL_USERNAME"),
-          pass: env("EMAIL_PASSWORD"),
-        },
+          pass: env("EMAIL_PASSWORD")
+        }
       },
       settings: {
         defaultFrom: env("EMAIL_FROM"),
-        defaultReplyTo: env("EMAIL_REPLY_TO"),
-      },
-    },
-  },
+        defaultReplyTo: env("EMAIL_REPLY_TO")
+      }
+    }
+  }
 });
