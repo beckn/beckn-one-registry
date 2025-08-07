@@ -1,0 +1,1447 @@
+{
+  "info": {
+    "_postman_id": "814f71ce-201c-4371-8915-0e070749a320",
+    "name": "DeDi Copy",
+    "description": "Decentralized Directory - Access",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23690031"
+  },
+  "item": [
+    {
+      "name": "Lookup",
+      "item": [
+        {
+          "name": "Namespace",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dedi/lookup/{{namespaceId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["dedi", "lookup", "{{namespaceId}}"]
+            },
+            "description": "Get the latest details of the namespace. Generally, namespace is for 'Account' of the entity, and its public key is mentioned. Can have details of website/URL for proving more trust."
+          },
+          "response": [
+            {
+              "name": "Namespace",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/lookup/{{namespaceId}}",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["dedi", "lookup", "{{namespaceId}}"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.24.0 (Ubuntu)"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 09 Apr 2025 05:40:29 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "647"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Permissions-Policy",
+                  "value": "fullscreen=(self), geolocation=(self)"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"287-bPwy9KYZ0eFCl6G/oF4UnMCUc0k\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Namespace details retrieved successfully\",\n    \"data\": {\n        \"name\": \"fide.org\",\n        \"namespace_id\": \"namespace:cord:tirXC4b4uecnyDhjh8Bd4Bugazmv4MezuFoe2tHRLtRhipTAX\",\n        \"digest\": \"0x4dd56ec309e05ee96a8b38a920896dfd7d73d382ecac0d4f9272fe210360a22d\",\n        \"description\": \"FIDE is a not-for-profit organization\",\n        \"created_by\": \"3uzm7zp5Buc9r9vgnsyHJgfmziwzm8oqNrjVaQLKDbr2jnNh\",\n        \"created_at\": \"Mon Apr 07 2025 09:57:25 GMT+0000 (Coordinated Universal Time)\",\n        \"updated_at\": \"Mon Apr 07 2025 09:57:25 GMT+0000 (Coordinated Universal Time)\",\n        \"version_count\": \"1\",\n        \"version\": \"0x38b16780d475560ef996599b759c54fcd6a917579f416f9299519f955f02f620\",\n        \"registry_count\": \"1\",\n        \"ttl\": \"600\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Registry",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dedi/lookup/{{namespaceId}}/{{networkSubscribersRegistryName}}",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "lookup",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}"
+              ],
+              "query": [
+                {
+                  "key": "version",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Get the latest details of the directory"
+          },
+          "response": []
+        },
+        {
+          "name": "Record",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dedi/lookup/{{namespaceId}}/{{networkSubscribersRegistryName}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "lookup",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}",
+                ""
+              ]
+            },
+            "description": "Get the details of the record inside of the directory"
+          },
+          "response": [
+            {
+              "name": "Record",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/lookup/{{namespaceId}}/{{networkSubscribersRegistryName}}/registry.becknprotocol.io.k1",
+                  "host": ["{{baseUrl}}"],
+                  "path": [
+                    "dedi",
+                    "lookup",
+                    "{{namespaceId}}",
+                    "{{networkSubscribersRegistryName}}",
+                    "registry.becknprotocol.io.k1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.24.0 (Ubuntu)"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 09 Apr 2025 05:41:10 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1744"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Permissions-Policy",
+                  "value": "fullscreen=(self), geolocation=(self)"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6d0-5dNPJ9ceAXRoTMn/II/TZeHBWd0\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Resource retrieved successfully\",\n    \"data\": {\n        \"namespace\": \"namespace:cord:tirXC4b4uecnyDhjh8Bd4Bugazmv4MezuFoe2tHRLtRhipTAX\",\n        \"namespace_id\": \"namespace:cord:tirXC4b4uecnyDhjh8Bd4Bugazmv4MezuFoe2tHRLtRhipTAX\",\n        \"registry_id\": \"registry:cord:bdo5kPgs1TNrot1Jc1kDpMMf6t2b7wBLv8W77CpEE2HsKCmNZ\",\n        \"registry_name\": \"network-subscribers\",\n        \"record_id\": \"undefined\",\n        \"record_name\": \"undefined\",\n        \"description\": \"Alex Nounce is the network participant\",\n        \"digest\": \"0x5c1e3df801c0ef9cafae3f34d74c238487697063048b1437b72700cf0367909c\",\n        \"schema\": {\n            \"key_id\": \"string\",\n            \"created\": \"string\",\n            \"city_code\": \"string\",\n            \"valid_from\": \"string\",\n            \"type\": \"string\",\n            \"nonce\": \"string\",\n            \"url\": \"string\",\n            \"country_code\": \"string\",\n            \"signing_public_key\": \"string\",\n            \"subscriber_id\": \"string\",\n            \"valid_until\": \"string\",\n            \"domain\": \"string\",\n            \"encr_public_key\": \"string\",\n            \"updated\": \"string\",\n            \"status\": \"string\"\n        },\n        \"version_count\": 4,\n        \"version\": \"0x3018e635665351a4963668df39dc3cbd9bd92cbe1d965671368b35f4f273b968\",\n        \"details\": {\n            \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n            \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n            \"key_id\": \"registry.becknprotocol.io.k1\",\n            \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n            \"url\": \"https://registry.becknprotocol.io/subscribers\",\n            \"created\": \"2024-11-21T10:39:22.000Z\",\n            \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n            \"type\": \"LREG\",\n            \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n            \"updated\": \"2024-11-21T10:39:22.000Z\",\n            \"status\": \"SUBSCRIBED\",\n            \"city_code\": \"STD:080\",\n            \"country_code\": \"IND\",\n            \"domain\": \"registry.becknprotocol.io\",\n            \"nonce\": \"\"\n        },\n        \"created_at\": \"Mon Apr 07 2025 18:43:31 GMT+0000 (Coordinated Universal Time)\",\n        \"last_updated_at\": \"Wed Apr 09 2025 05:37:51 GMT+0000 (Coordinated Universal Time)\",\n        \"created_by\": \"3uzm7zp5Buc9r9vgnsyHJgfmziwzm8oqNrjVaQLKDbr2jnNh\",\n        \"ttl\": \"600\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Query namespace",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dedi/query/{{namespaceId}}?from=&to=&status=&name=&sort=&page=&page_size=",
+              "host": ["{{baseUrl}}"],
+              "path": ["dedi", "query", "{{namespaceId}}"],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "",
+                  "description": "Filter by date. Default is directory created_at"
+                },
+                {
+                  "key": "to",
+                  "value": "",
+                  "description": "Filter by date. Default is 'now'"
+                },
+                {
+                  "key": "status",
+                  "value": "",
+                  "description": "Filter by status."
+                },
+                {
+                  "key": "name",
+                  "value": "",
+                  "description": "Filter by name. The match will happen with 'Like' operator. Minimum 3 letters, otherwise ignored."
+                },
+                {
+                  "key": "sort",
+                  "value": "",
+                  "description": "Sort the results by a specified field (asc)"
+                },
+                {
+                  "key": "page",
+                  "value": "",
+                  "description": "Used in pagination. Default is 0 (ie, first page) from latest updated."
+                },
+                {
+                  "key": "page_size",
+                  "value": "",
+                  "description": "Record payload length in each get call. Default is 100."
+                }
+              ]
+            },
+            "description": "Get the directories inside the given namespace"
+          },
+          "response": [
+            {
+              "name": "queryNamespace",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/query/{{namespaceId}}?from=&to=&status=&name=&sort=&page=&page_size=",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["dedi", "query", "{{namespaceId}}"],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "",
+                      "description": "Filter by date. Default is directory created_at"
+                    },
+                    {
+                      "key": "to",
+                      "value": "",
+                      "description": "Filter by date. Default is 'now'"
+                    },
+                    {
+                      "key": "status",
+                      "value": "",
+                      "description": "Filter by status."
+                    },
+                    {
+                      "key": "name",
+                      "value": "",
+                      "description": "Filter by name. The match will happen with 'Like' operator. Minimum 3 letters, otherwise ignored."
+                    },
+                    {
+                      "key": "sort",
+                      "value": "",
+                      "description": "Sort the results by a specified field (asc)"
+                    },
+                    {
+                      "key": "page",
+                      "value": "",
+                      "description": "Used in pagination. Default is 0 (ie, first page) from latest updated."
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "",
+                      "description": "Record payload length in each get call. Default is 100."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.24.0 (Ubuntu)"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 09 Apr 2025 05:41:17 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1244"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Permissions-Policy",
+                  "value": "fullscreen=(self), geolocation=(self)"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4dc-2DpSk0qmUTQuWOe8/2kH93+yJZE\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Resource retrieved successfully\",\n    \"data\": {\n        \"namespace_id\": \"namespace:cord:tirXC4b4uecnyDhjh8Bd4Bugazmv4MezuFoe2tHRLtRhipTAX\",\n        \"namespace_name\": \"fide.org\",\n        \"created_by\": \"3uzm7zp5Buc9r9vgnsyHJgfmziwzm8oqNrjVaQLKDbr2jnNh\",\n        \"created_at\": \"2025-04-07T09:57:25.349Z\",\n        \"updated_at\": \"2025-04-07T09:57:25.349Z\",\n        \"total_registries\": 1,\n        \"registries\": [\n            {\n                \"digest\": \"0x13e340b4b5ec9a65e86193e201c5a9bf3f54a1f84ee95b50de5203a2080aa824\",\n                \"registry_id\": \"registry:cord:bdo5kPgs1TNrot1Jc1kDpMMf6t2b7wBLv8W77CpEE2HsKCmNZ\",\n                \"registry_name\": \"network-subscribers\",\n                \"description\": \"Network subscribers\",\n                \"created_by\": \"3uzm7zp5Buc9r9vgnsyHJgfmziwzm8oqNrjVaQLKDbr2jnNh\",\n                \"schema\": {\n                    \"key_id\": \"string\",\n                    \"created\": \"string\",\n                    \"city_code\": \"string\",\n                    \"valid_from\": \"string\",\n                    \"type\": \"string\",\n                    \"nonce\": \"string\",\n                    \"url\": \"string\",\n                    \"country_code\": \"string\",\n                    \"signing_public_key\": \"string\",\n                    \"subscriber_id\": \"string\",\n                    \"valid_until\": \"string\",\n                    \"domain\": \"string\",\n                    \"encr_public_key\": \"string\",\n                    \"updated\": \"string\",\n                    \"status\": \"string\"\n                },\n                \"created_at\": \"2025-04-07T18:36:09.937Z\",\n                \"updated_at\": \"2025-04-07T18:36:09.937Z\",\n                \"record_count\": 1,\n                \"version_count\": 1,\n                \"version\": \"0x3018e635665351a4963668df39dc3cbd9bd92cbe1d965671368b35f4f273b968\",\n                \"query_allowed\": true,\n                \"is_revoked\": false,\n                \"is_archived\": false,\n                \"delegates\": []\n            }\n        ],\n        \"ttl\": 600\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Query registry",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/query/{{namespaceId}}/{{networkSubscribersRegistryName}}",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "query",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}"
+              ]
+            },
+            "description": "Get the records matching the directory"
+          },
+          "response": [
+            {
+              "name": "Query registry",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/query/{{namespaceId}}/{{networkSubscribersRegistryName}}?version=4&from=&to=&status=&name=&sort=&page=&page_size=",
+                  "host": ["{{baseUrl}}"],
+                  "path": [
+                    "dedi",
+                    "query",
+                    "{{namespaceId}}",
+                    "{{networkSubscribersRegistryName}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "4"
+                    },
+                    {
+                      "key": "from",
+                      "value": ""
+                    },
+                    {
+                      "key": "to",
+                      "value": ""
+                    },
+                    {
+                      "key": "status",
+                      "value": ""
+                    },
+                    {
+                      "key": "name",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "page",
+                      "value": ""
+                    },
+                    {
+                      "key": "page_size",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.24.0 (Ubuntu)"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 09 Apr 2025 05:41:21 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "5048"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Permissions-Policy",
+                  "value": "fullscreen=(self), geolocation=(self)"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"13b8-sEW1FhGpjGvjSCpXfX31/hOd9sE\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Resource retrieved successfully\",\n    \"data\": {\n        \"namespace_id\": \"namespace:cord:tirXC4b4uecnyDhjh8Bd4Bugazmv4MezuFoe2tHRLtRhipTAX\",\n        \"namespace_name\": \"fide.org\",\n        \"registry_name\": \"network-subscribers\",\n        \"registry_id\": \"registry:cord:bdo5kPgs1TNrot1Jc1kDpMMf6t2b7wBLv8W77CpEE2HsKCmNZ\",\n        \"schema\": {\n            \"key_id\": \"string\",\n            \"created\": \"string\",\n            \"city_code\": \"string\",\n            \"valid_from\": \"string\",\n            \"type\": \"string\",\n            \"nonce\": \"string\",\n            \"url\": \"string\",\n            \"country_code\": \"string\",\n            \"signing_public_key\": \"string\",\n            \"subscriber_id\": \"string\",\n            \"valid_until\": \"string\",\n            \"domain\": \"string\",\n            \"encr_public_key\": \"string\",\n            \"updated\": \"string\",\n            \"status\": \"string\"\n        },\n        \"created_by\": \"3uzm7zp5Buc9r9vgnsyHJgfmziwzm8oqNrjVaQLKDbr2jnNh\",\n        \"created_at\": \"2025-04-07T18:36:09.937Z\",\n        \"updated_at\": \"2025-04-07T18:36:09.937Z\",\n        \"total_records\": 4,\n        \"records\": [\n            {\n                \"digest\": \"0x5c1e3df801c0ef9cafae3f34d74c238487697063048b1437b72700cf0367909c\",\n                \"record_name\": \"registry.becknprotocol.io.k1\",\n                \"record_id\": \"entry:cord:u2yFNXZ7SVKe1cqu8vtxoQ7xWoPF8F9C2Uo8omhR7bxRtY993\",\n                \"description\": \"Alex Nounce is the network participant\",\n                \"details\": {\n                    \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n                    \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n                    \"key_id\": \"registry.becknprotocol.io.k1\",\n                    \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n                    \"url\": \"https://registry.becknprotocol.io/subscribers\",\n                    \"created\": \"2024-11-21T10:39:22.000Z\",\n                    \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n                    \"type\": \"LREG\",\n                    \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n                    \"updated\": \"2024-11-21T10:39:22.000Z\",\n                    \"status\": \"SUBSCRIBED\",\n                    \"city_code\": \"STD:080\",\n                    \"country_code\": \"IND\",\n                    \"domain\": \"registry.becknprotocol.io\",\n                    \"nonce\": \"\"\n                },\n                \"created_at\": \"2025-04-07T18:43:31.051Z\",\n                \"updated_at\": \"2025-04-09T05:37:51.267Z\",\n                \"created_by\": \"3uzm7zp5Buc9r9vgnsyHJgfmziwzm8oqNrjVaQLKDbr2jnNh\",\n                \"version_count\": 4,\n                \"version\": \"0xd6894719e0cbfbdc8adae9bf6bf8da8ad47178228b6c11dab63babf933d536d4\"\n            },\n            {\n                \"digest\": \"0x845723cd921a7c2f41ff696b7495baa468f7510364eafa78c8fbe9c7142c8d02\",\n                \"record_name\": \"registry.becknprotocol.io.k1\",\n                \"record_id\": \"entry:cord:u2yFNXZ7SVKe1cqu8vtxoQ7xWoPF8F9C2Uo8omhR7bxRtY993\",\n                \"description\": \"Alex Nounce is the network participant\",\n                \"details\": {\n                    \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n                    \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n                    \"key_id\": \"registry.becknprotocol.io.k1\",\n                    \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n                    \"url\": \"https://registry.becknprotocol.io/subscribers\",\n                    \"created\": \"2024-11-21T10:39:22.000Z\",\n                    \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n                    \"type\": \"LREG\",\n                    \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n                    \"updated\": \"2024-11-21T10:39:22.000Z\",\n                    \"status\": \"SUBSCRIBED\",\n                    \"city_code\": \"STD:080\",\n                    \"country_code\": \"IND\",\n                    \"domain\": \"registry.becknprotocol.io\",\n                    \"nonce\": \"\"\n                },\n                \"created_at\": \"2025-04-07T18:43:31.051Z\",\n                \"updated_at\": \"2025-04-09T05:35:29.000Z\",\n                \"created_by\": \"3uzm7zp5Buc9r9vgnsyHJgfmziwzm8oqNrjVaQLKDbr2jnNh\",\n                \"version_count\": 3,\n                \"version\": \"0x376fb1aa035f9fc29680ce2bbdc8dd8b865a7da7190cf6c82b9daf5a69aa4cb2\"\n            },\n            {\n                \"digest\": \"0x976fa900bb30f20af01f5c4a32fee6ad2f7f27ceb56402b75f2db33a94a306bf\",\n                \"record_name\": \"registry.becknprotocol.io.k1\",\n                \"record_id\": \"entry:cord:u2yFNXZ7SVKe1cqu8vtxoQ7xWoPF8F9C2Uo8omhR7bxRtY993\",\n                \"description\": \"Alex Nounce is the network participant\",\n                \"details\": {\n                    \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n                    \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n                    \"key_id\": \"registry.becknprotocol.io.k01\",\n                    \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n                    \"url\": \"https://registry.becknprotocol.io/subscribers\",\n                    \"created\": \"2024-11-21T10:39:22.000Z\",\n                    \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n                    \"type\": \"LREG\",\n                    \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n                    \"updated\": \"2024-11-21T10:39:22.000Z\",\n                    \"status\": \"SUBSCRIBED\",\n                    \"city_code\": \"STD:080\",\n                    \"country_code\": \"IND\",\n                    \"domain\": \"registry.becknprotocol.io\",\n                    \"nonce\": \"\"\n                },\n                \"created_at\": \"2025-04-07T18:43:31.051Z\",\n                \"updated_at\": \"2025-04-09T05:34:34.886Z\",\n                \"created_by\": \"3uzm7zp5Buc9r9vgnsyHJgfmziwzm8oqNrjVaQLKDbr2jnNh\",\n                \"version_count\": 2,\n                \"version\": \"0x27f75b222a1d9e463437c69dc5df4198c9947b95b459aa5994b51248909dcf6a\"\n            },\n            {\n                \"digest\": \"0xa5d921a849c894880a2033352601c1e4cc04382b0263d55cf163479092ad4c69\",\n                \"record_name\": \"registry.becknprotocol.io.k1\",\n                \"record_id\": \"entry:cord:u2yFNXZ7SVKe1cqu8vtxoQ7xWoPF8F9C2Uo8omhR7bxRtY993\",\n                \"description\": \"registry.becknprotocol.io.k1\",\n                \"details\": {\n                    \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n                    \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n                    \"key_id\": \"registry.becknprotocol.io.k1\",\n                    \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n                    \"url\": \"https://registry.becknprotocol.io/subscribers\",\n                    \"created\": \"2024-11-21T10:39:22.000Z\",\n                    \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n                    \"type\": \"LREG\",\n                    \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n                    \"updated\": \"2024-11-21T10:39:22.000Z\",\n                    \"status\": \"SUBSCRIBED\",\n                    \"city_code\": \"STD:080\",\n                    \"country_code\": \"IND\",\n                    \"domain\": \"registry.becknprotocol.io\",\n                    \"nonce\": \"\"\n                },\n                \"created_at\": \"2025-04-07T18:43:31.051Z\",\n                \"updated_at\": \"2025-04-07T18:43:31.051Z\",\n                \"created_by\": \"3uzm7zp5Buc9r9vgnsyHJgfmziwzm8oqNrjVaQLKDbr2jnNh\",\n                \"version_count\": 1,\n                \"version\": \"0xf20184507058c2d68764d61edaa2fcd7a9b3ed559c0e2b873d11f8c5a6019915\"\n            }\n        ],\n        \"ttl\": 600\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Version registry",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dedi/versions/{{namespaceId}}/{{networkSubscribersRegistryName}}?from=&to=&sort=&page=&page_size=",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "versions",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}"
+              ],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "",
+                  "description": "Filter by date. Default is directory created_at"
+                },
+                {
+                  "key": "to",
+                  "value": "",
+                  "description": "Filter by date. Default is 'now'"
+                },
+                {
+                  "key": "sort",
+                  "value": "",
+                  "description": "Sort the results by a specified field (asc)"
+                },
+                {
+                  "key": "page",
+                  "value": "",
+                  "description": "Used in pagination. Default is 0 (ie, first page) from latest updated."
+                },
+                {
+                  "key": "page_size",
+                  "value": "",
+                  "description": "Record payload length in each get call. Default is 100."
+                }
+              ]
+            },
+            "description": "Get the available versions of the directory."
+          },
+          "response": []
+        },
+        {
+          "name": "Registry history",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dedi/history/{{namespaceId}}/{{networkSubscribersRegistryName}}?version-id=&from=&to=",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "history",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}"
+              ],
+              "query": [
+                {
+                  "key": "version-id",
+                  "value": "",
+                  "description": "Version-ID of the particular directory. Default is null, in which case, lastest is responded."
+                },
+                {
+                  "key": "from",
+                  "value": "",
+                  "description": "Filter by date. Default is directory created_at date"
+                },
+                {
+                  "key": "to",
+                  "value": "",
+                  "description": "Filter by date. Default is 'now'"
+                }
+              ]
+            },
+            "description": "Get the details of the directory, contain all details of changes to directory details from the create time, and who did the chagnes"
+          },
+          "response": []
+        },
+        {
+          "name": "Record history",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dedi/history/{{namespaceId}}/{{networkSubscribersRegistryName}}/mayank?from=&to=",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "history",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}",
+                "mayank"
+              ],
+              "query": [
+                {
+                  "key": "from",
+                  "value": ""
+                },
+                {
+                  "key": "to",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Get the historic details of the record inside of the directory"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Publish",
+      "item": [
+        {
+          "name": "Create namespace",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"{{namespace}}\",\n    \"description\": \"FIDE is a not-for-profit organization\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/create-namespace",
+              "host": ["{{baseUrl}}"],
+              "path": ["dedi", "create-namespace"]
+            }
+          },
+          "response": [
+            {
+              "name": "Create namespace",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"{{namespace}}\",\n    \"description\": \"FIDE is a not-for-profit organization\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/create-namespace",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["dedi", "create-namespace"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Namespace created successfully\",\n    \"data\": {\n        \"namespace_id\": \"namespace:cord:tirXC4b4uecnyDhjh8Bd4Bugazmv4MezuFoe2tHRLtRhipTAX\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create registry",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"registry_name\": \"network-subscribers\",\n    \"description\": \"Network subscribers\",\n    \"schema\": {\n        \"key_id\": \"string\",\n        \"created\": \"string\",\n        \"city_code\": \"string\",\n        \"valid_from\": \"string\",\n        \"type\": \"string\",\n        \"nonce\": \"string\",\n        \"url\": \"string\",\n        \"country_code\": \"string\",\n        \"signing_public_key\": \"string\",\n        \"subscriber_id\": \"string\",\n        \"valid_until\": \"string\",\n        \"domain\": \"string\",\n        \"encr_public_key\": \"string\",\n        \"updated\": \"string\",\n        \"status\": \"string\"\n    },\n    \"query_allowed\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/{{namespaceId}}/create-registry",
+              "host": ["{{baseUrl}}"],
+              "path": ["dedi", "{{namespaceId}}", "create-registry"]
+            }
+          },
+          "response": [
+            {
+              "name": "Create registry",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"registry_name\": \"network-subscribers\",\n    \"description\": \"Network subscribers\",\n    \"schema\": {\n        \"key_id\": \"string\",\n        \"created\": \"string\",\n        \"city_code\": \"string\",\n        \"valid_from\": \"string\",\n        \"type\": \"string\",\n        \"nonce\": \"string\",\n        \"url\": \"string\",\n        \"country_code\": \"string\",\n        \"signing_public_key\": \"string\",\n        \"subscriber_id\": \"string\",\n        \"valid_until\": \"string\",\n        \"domain\": \"string\",\n        \"encr_public_key\": \"string\",\n        \"updated\": \"string\",\n        \"status\": \"string\"\n    },\n    \"query_allowed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/{{namespaceId}}/create-registry",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["dedi", "{{namespaceId}}", "create-registry"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Registry created\",\n    \"data\": {\n        \"registry_id\": \"registry:cord:bdo5kPgs1TNrot1Jc1kDpMMf6t2b7wBLv8W77CpEE2HsKCmNZ\",\n        \"authorization\": \"registryauth:cord:X8JkscFBDaFoYCADDSE1GPSjEgoGyVBsTYY6zoAmanEhdapAY\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create record",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"record_name\": \"registry.becknprotocol.io.k1\",\n    \"description\": \"registry.becknprotocol.io.k1\",\n    \"details\": {\n        \"signing_public_key\": \"0HvwvaTq5QA65UXPIhHMh3Ca/0C9koi4pRF9/7nQy8w=\",\n        \"subscriber_id\": \"dedi-bap\",\n        \"key_id\": \"8837b270-18b3-42c4-9577-bb910f6f43bf\",\n        \"valid_until\": \"2027-05-26T11:49:10.152Z\",\n        \"url\": \"http://35.200.159.221:80/bap/receiver\",\n        \"created\": \"2025-05-26T11:49:10.152Z\",\n        \"valid_from\": \"2025-05-26T11:49:10.152Z\",\n        \"type\": \"BAP\",\n        \"encr_public_key\": \"vDxqMCcTRPWIizECRCK40qt6DH8rVBjRxnHUjkJPG1w=\",\n        \"updated\": \"2025-05-26T11:49:10.152Z\",\n        \"status\": \"SUBSCRIBED\",\n        \"city_code\": \"*\",\n        \"country_code\": \"*\",\n        \"domain\": \"*\",\n        \"nonce\": \"\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/{{namespaceId}}/{{networkSubscribersRegistryName}}/add-record",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}",
+                "add-record"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create record",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"record_name\": \"registry.becknprotocol.io.k1\",\n    \"description\": \"registry.becknprotocol.io.k1\",\n    \"details\": {\n        \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n        \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n        \"key_id\": \"registry.becknprotocol.io.k1\",\n        \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n        \"url\": \"https://registry.becknprotocol.io/subscribers\",\n        \"created\": \"2024-11-21T10:39:22.000Z\",\n        \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n        \"type\": \"LREG\",\n        \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n        \"updated\": \"2024-11-21T10:39:22.000Z\",\n        \"status\": \"SUBSCRIBED\",\n        \"city_code\": \"STD:080\",\n        \"country_code\": \"IND\",\n        \"domain\": \"registry.becknprotocol.io\",\n        \"nonce\": \"\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/{{namespace}}/{{networkSubscribersRegistryName}}/add-record",
+                  "host": ["{{baseUrl}}"],
+                  "path": [
+                    "dedi",
+                    "{{namespace}}",
+                    "{{networkSubscribersRegistryName}}",
+                    "add-record"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"record created\",\n    \"data\": {\n        \"record_id\": \"entry:cord:u2yFNXZ7SVKe1cqu8vtxoQ7xWoPF8F9C2Uo8omhR7bxRtY993\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update record",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \n    \"details\": {\n        \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\"\n        \n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/{{namespaceId}}/{{networkSubscribersRegistryName}}/registry.becknprotocol.io.k1/update-record",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}",
+                "registry.becknprotocol.io.k1",
+                "update-record"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update record",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"record_name\": \"registry.becknprotocol.io.k1\",\n    \"description\": \"Alex Nounce is the network participant\",\n    \"details\": {\n        \"signing_public_key\": \"8ESqL7gcwBayfoZUQQ3tBNFALbI7mzfJ2UN7lM8OCDU=\",\n        \"subscriber_id\": \"registry.becknprotocol.io..LREG\",\n        \"key_id\": \"registry.becknprotocol.io.k01\",\n        \"valid_until\": \"2034-11-21T22:39:22.098Z\",\n        \"url\": \"https://registry.becknprotocol.io/subscribers\",\n        \"created\": \"2024-11-21T10:39:22.000Z\",\n        \"valid_from\": \"2024-11-21T10:39:22.098Z\",\n        \"type\": \"LREG\",\n        \"encr_public_key\": \"I6NspwbUAuZD6INwP/vUus2+srjGauBL26HfGc3V0Rk=\",\n        \"updated\": \"2024-11-21T10:39:22.000Z\",\n        \"status\": \"SUBSCRIBED\",\n        \"city_code\": \"STD:080\",\n        \"country_code\": \"IND\",\n        \"domain\": \"registry.becknprotocol.io\",\n        \"nonce\": \"\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/{{namespaceId}}/{{networkSubscribersRegistryName}}/registry.becknprotocol.io.k1/update-record",
+                  "host": ["{{baseUrl}}"],
+                  "path": [
+                    "dedi",
+                    "{{namespaceId}}",
+                    "{{networkSubscribersRegistryName}}",
+                    "registry.becknprotocol.io.k1",
+                    "update-record"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Record updated\",\n    \"data\": {\n        \"digest\": \"0x976fa900bb30f20af01f5c4a32fee6ad2f7f27ceb56402b75f2db33a94a306bf\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Revoke a record",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dedi/{{namespaceId}}/{{networkSubscribersRegistryName}}/4kqkokC0_Szht5G847dN7/revoke-record",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}",
+                "4kqkokC0_Szht5G847dN7",
+                "revoke-record"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reinstate a record",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dedi/{{namespaceId}}/{{networkSubscribersRegistryName}}/4kqkokC0_Szht5G847dN7/reinstate-record",
+              "host": ["{{baseUrl}}"],
+              "path": [
+                "dedi",
+                "{{namespaceId}}",
+                "{{networkSubscribersRegistryName}}",
+                "4kqkokC0_Szht5G847dN7",
+                "reinstate-record"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Access",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Store JWT and Email in collection variables\", function () {",
+                  "    let responseJson = pm.response.json();",
+                  "    ",
+                  "    if (responseJson.data && responseJson.data.email) {",
+                  "        pm.collectionVariables.set(\"userEmail\", responseJson.data.email);",
+                  "        console.log(\"Email stored successfully: \" + responseJson.data.email);",
+                  "    } else {",
+                  "        pm.test(\"Email is missing in response\", function() {",
+                  "            pm.expect(responseJson.data.email).to.exist;",
+                  "        });",
+                  "    }",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"{{$randomUserName}}\",\n    \"firstname\": \"{{$randomFirstName}}\",\n    \"lastname\": \"{{$randomLastName}}\",\n    \"email\": \"{{userEmail}}\",\n    \"password\": \"{{commonPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["dedi", "register"]
+            }
+          },
+          "response": [
+            {
+              "name": "Register",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\": \"{{$randomUserName}}\",\n    \"firstname\": \"{{$randomFirstName}}\",\n    \"lastname\": \"{{$randomLastName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{commonPassword}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/register",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["dedi", "register"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"id\": \"2cda62dc-056e-4c36-93a8-0df8eb1281fe\",\n        \"username\": \"camren.raynor\",\n        \"email\": \"rupert75@yahoo.com\",\n        \"firstname\": \"Margaret\",\n        \"lastname\": \"Mueller\",\n        \"email_verified\": false,\n        \"realm_roles\": [\n            \"default-roles-dhiway-test\"\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let response = pm.response.json();",
+                  "",
+                  "if (response.data) {",
+                  "    const msg = response.data;",
+                  "    ",
+                  "",
+                  "    // Store access token info",
+                  "    if (msg.access_token) {",
+                  "        pm.collectionVariables.set(\"accessToken\", msg.access_token);",
+                  "    }",
+                  "",
+                  "    // Store refresh token",
+                  "    if (msg.refresh_token) {",
+                  "        pm.collectionVariables.set(\"refreshToken\", msg.refresh_token);",
+                  "    }",
+                  "",
+                  "    // Store token type",
+                  "    if (msg.token_type) {",
+                  "        pm.collectionVariables.set(\"tokenType\", msg.token_type);",
+                  "    }",
+                  "",
+                  "    // Store creator_id if available",
+                  "    if (msg.creator_id) {",
+                  "        pm.collectionVariables.set(\"creatorId\", msg.creator_id);",
+                  "    }",
+                  "",
+                  "    console.log(\"Tokens and creatorId saved in collection variables.\");",
+                  "} else {",
+                  "    console.warn(\"Response does not contain expected 'message' structure.\");",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{userEmail}}\",\n    \"password\": \"{{userPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["dedi", "login"]
+            }
+          },
+          "response": [
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"{{userEmail}}\",\n  \"password\": \"12345678a\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/login",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["dedi", "login"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": {\n        \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJZcE1WdUNYNnNlalM2UkVfeUVyQnY0SHI4cF9SbDFwWjlmR3FkMWNfbkhRIn0.eyJleHAiOjE3NDQwMzg5MjksImlhdCI6MTc0NDAxNzMyOSwianRpIjoiYmMyNmUyY2EtNzM1Yy00OWQwLWI0YWQtMGFkYTFkY2MzYjJlIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZW1vLmRoaXdheS5jb20vcmVhbG1zL2RoaXdheS10ZXN0IiwiYXVkIjpbInJlYWxtLW1hbmFnZW1lbnQiLCJhY2NvdW50Il0sInN1YiI6ImVjZGQ2MGZjLWRiMmQtNGI0Yi05OGMxLTJkODA3N2MyZjE3NiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImRoaXdheUNsaWVudCIsInNlc3Npb25fc3RhdGUiOiJjOGIxYjY0Zi0zNmM4LTQ4MTktYjFjMi1jMGUwY2M5ZTE5OTYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIi8qIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRoaXdheS10ZXN0Iiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InJlYWxtLW1hbmFnZW1lbnQiOnsicm9sZXMiOlsibWFuYWdlLXVzZXJzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiYzhiMWI2NGYtMzZjOC00ODE5LWIxYzItYzBlMGNjOWUxOTk2IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJBZGkgQiIsInByZWZlcnJlZF91c2VybmFtZSI6ImFyZGVudC5hamF5IiwiZ2l2ZW5fbmFtZSI6IkFkaSIsImZhbWlseV9uYW1lIjoiQiIsImVtYWlsIjoiYXJkZW50LmFqYXlAZ21haWwuY29tIn0.SbdqzC9J7atYkHKvvCTQjHQ317jmtvt8x6R69auEoLpaPzw0WD7CshWrgQX0ytE0SXgGRXTMc90dhI3-NSin_349j8Z--SrZ5cs79Xip9cgnf9paT8fgdf0HaAIxWHnig4CDpufjS79MQp6OCAorz0gYNZjtvja2c1JRXb8d6UoSjdmh3YQKttBqlTWZBp3MYTZDRPb-z6t05lVp719DZqtfEeNOAM0KDt-jqtEa5zjXOJT5w7S-jCBJYhZFyTDH049jfoWXE-zH6_jqbBITZdJcfcj6tdwLwQ7OBUAaBgc4-TrjHljHEjcEeKZTlgD4bZt0QAXTg1ETDdX8c90z4g\",\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 21600,\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3NjgzOGJhNC03YWM0LTQ3OWEtYjc2Yy01ZTk5YmRmNDJiYWIifQ.eyJleHAiOjE3NDQwNTMzMjksImlhdCI6MTc0NDAxNzMyOSwianRpIjoiMzlmOTkzNzktMzM3Mi00YzRjLWE5MTItOTdlYjUwYzEwNjMyIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZW1vLmRoaXdheS5jb20vcmVhbG1zL2RoaXdheS10ZXN0IiwiYXVkIjoiaHR0cHM6Ly9rZXljbG9hay5kZW1vLmRoaXdheS5jb20vcmVhbG1zL2RoaXdheS10ZXN0Iiwic3ViIjoiZWNkZDYwZmMtZGIyZC00YjRiLTk4YzEtMmQ4MDc3YzJmMTc2IiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImRoaXdheUNsaWVudCIsInNlc3Npb25fc3RhdGUiOiJjOGIxYjY0Zi0zNmM4LTQ4MTktYjFjMi1jMGUwY2M5ZTE5OTYiLCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiYzhiMWI2NGYtMzZjOC00ODE5LWIxYzItYzBlMGNjOWUxOTk2In0.wHCUylrU8GoHaTAVIlXYelHYIz7l1n-oEcVnIUjYcRE\",\n        \"refresh_expires_in\": 36000\n    },\n    \"creator_id\": \"3yD7f6uroa3ZAuvvrFDDK3pbRWHKJRS3o4ADt8qZmJLr1xbC\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Resend verification email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{userEmail}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/resend-verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["dedi", "resend-verify"]
+            }
+          },
+          "response": [
+            {
+              "name": "Resend verification email",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{userEmail}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/resend-verify",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["dedi", "resend-verify"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Verification email has been sent to ardent.ajay@gmail.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Token refresh",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "if (res && res.message) {",
+                  "    const msg = res.message;",
+                  "",
+                  "    if (msg.access_token) {",
+                  "        pm.collectionVariables.set(\"accessToken\", msg.access_token);",
+                  "        console.log(\"Stored accessToken\");",
+                  "    } else {",
+                  "        console.warn(\"access_token not found in response\");",
+                  "    }",
+                  "",
+                  "    if (msg.refresh_token) {",
+                  "        pm.collectionVariables.set(\"refreshToken\", msg.refresh_token);",
+                  "        console.log(\"Stored refreshToken\");",
+                  "    } else {",
+                  "        console.warn(\"refresh_token not found in response\");",
+                  "    }",
+                  "",
+                  "    if (msg.token_type) {",
+                  "        pm.collectionVariables.set(\"tokenType\", msg.token_type);",
+                  "        console.log(\"Stored tokenType\");",
+                  "    } else {",
+                  "        console.warn(\"token_type not found in response\");",
+                  "    }",
+                  "} else {",
+                  "    console.warn(\"Response or message object is missing\");",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// {\n//   \"refresh_token\": \"{{refreshToken}}\"\n// }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/token/refresh",
+              "host": ["{{baseUrl}}"],
+              "path": ["dedi", "token", "refresh"]
+            }
+          },
+          "response": [
+            {
+              "name": "Token refresh",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refresh_token\": \"{{refreshToken}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dedi/token/refresh",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["dedi", "token", "refresh"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.24.0 (Ubuntu)"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 07 Apr 2025 09:17:36 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2338"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Permissions-Policy",
+                  "value": "fullscreen=(self), geolocation=(self)"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"922-6TUe+DpnJzHOmUG1rUY2IcxXKdg\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": {\n        \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJZcE1WdUNYNnNlalM2UkVfeUVyQnY0SHI4cF9SbDFwWjlmR3FkMWNfbkhRIn0.eyJleHAiOjE3NDQwMzkwNTYsImlhdCI6MTc0NDAxNzQ1NiwianRpIjoiYTVjN2Y2NWQtOTJjNy00ZGNjLTlkOWQtYWNjMGRjZDU4OWVmIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZW1vLmRoaXdheS5jb20vcmVhbG1zL2RoaXdheS10ZXN0IiwiYXVkIjpbInJlYWxtLW1hbmFnZW1lbnQiLCJhY2NvdW50Il0sInN1YiI6ImVjZGQ2MGZjLWRiMmQtNGI0Yi05OGMxLTJkODA3N2MyZjE3NiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImRoaXdheUNsaWVudCIsInNlc3Npb25fc3RhdGUiOiJjOGIxYjY0Zi0zNmM4LTQ4MTktYjFjMi1jMGUwY2M5ZTE5OTYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIi8qIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWRoaXdheS10ZXN0Iiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InJlYWxtLW1hbmFnZW1lbnQiOnsicm9sZXMiOlsibWFuYWdlLXVzZXJzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiYzhiMWI2NGYtMzZjOC00ODE5LWIxYzItYzBlMGNjOWUxOTk2IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJBZGkgQiIsInByZWZlcnJlZF91c2VybmFtZSI6ImFyZGVudC5hamF5IiwiZ2l2ZW5fbmFtZSI6IkFkaSIsImZhbWlseV9uYW1lIjoiQiIsImVtYWlsIjoiYXJkZW50LmFqYXlAZ21haWwuY29tIn0.NiuCnvAoa9FA5nOkgtpf7gCKpcJN-Fezd3cjLxisXs5pOkNsEg7yEHQaKQ1bYG6sk98tW_qqCSZm3oYf_z0LU1rPCxOTjZqT0c1sfjv4HhEWpdnVqvqgPJNvPXvCzLpE-g_VoDLJ83F5-NhE-W7sGOiFlBHr7l45wTVLd2ks1xF1S9boN_2E4tpTtzT2Z2BdZGe2Meisav29uluZYF6AZnssnkk8cmteOwjyLOC6ILEnJdBOUUijNCo1ynrStmB-07x25MUM_QkNuQmYGVJzLmA2ozmqAhtidK16K6fXfahPbrRGjvARglXUigZGiWjITdanFWIyG2zJiIj-bv36ZQ\",\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 21600,\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3NjgzOGJhNC03YWM0LTQ3OWEtYjc2Yy01ZTk5YmRmNDJiYWIifQ.eyJleHAiOjE3NDQwNTMzMjksImlhdCI6MTc0NDAxNzQ1NiwianRpIjoiMGUzNmZiYmItYTQ4MS00YzFmLWI2YTgtYmI3YzA3NjdhMDQxIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZW1vLmRoaXdheS5jb20vcmVhbG1zL2RoaXdheS10ZXN0IiwiYXVkIjoiaHR0cHM6Ly9rZXljbG9hay5kZW1vLmRoaXdheS5jb20vcmVhbG1zL2RoaXdheS10ZXN0Iiwic3ViIjoiZWNkZDYwZmMtZGIyZC00YjRiLTk4YzEtMmQ4MDc3YzJmMTc2IiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImRoaXdheUNsaWVudCIsInNlc3Npb25fc3RhdGUiOiJjOGIxYjY0Zi0zNmM4LTQ4MTktYjFjMi1jMGUwY2M5ZTE5OTYiLCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiYzhiMWI2NGYtMzZjOC00ODE5LWIxYzItYzBlMGNjOWUxOTk2In0.l4c54IXWn-VRwsHOK1Ddqcw36lPak8WSkwsdd6M_Uc0\",\n        \"refresh_expires_in\": 35873\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// {\n//   \"token\": \"{{accessToken}}\"\n// }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dedi/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["dedi", "logout"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://lookup.dedi.global",
+      "type": "string"
+    },
+    {
+      "key": "commonPassword",
+      "value": "User@123",
+      "type": "string"
+    },
+    {
+      "key": "userEmail",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "userPassword",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    },
+    {
+      "key": "authHeader",
+      "value": ""
+    },
+    {
+      "key": "refreshToken",
+      "value": ""
+    },
+    {
+      "key": "tokenType",
+      "value": ""
+    },
+    {
+      "key": "namespace",
+      "value": "fide.org",
+      "type": "string"
+    },
+    {
+      "key": "namespaceId",
+      "value": "namespace:cord:tisu9rJf8zBsyrpvFCcafU393rsRrqriT3srBcG2ogksQFUvY",
+      "type": "string"
+    },
+    {
+      "key": "networkSubscribersRegistryId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "networkSubscribersRegistryName",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "creatorId",
+      "value": ""
+    }
+  ]
+}
