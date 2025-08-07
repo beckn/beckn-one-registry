@@ -48,7 +48,5 @@
    ```
 
 8. **Login to Strapi server**
-   - If prompted to login, use the following credentials:
-     - **Username:** webadmin@fide.org
-     - **Password:** Fide@123
+   - If prompted to login, use the following credentials shared over email
    - If no login prompt appears, you can create a new user account
